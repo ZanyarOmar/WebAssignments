@@ -1,26 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment #2</title>
-</head>
-<body>
+///////////////calculate.html file
 
-    <form action="index12.php" method="POST">
-        <label>Name <input type="text" name="you" placeholder="your name"></label><br><br>
-        <label>GENDER</label><br>
-        <label>Male<input type="radio" name="gender1" checked></label>
-        <label>Female<input type="radio" name="gender1"></label><br><hr>
 
-        <label>Name <input type="text" name="partner" placeholder="partner's name"></label><br><br>
-        <label>GENDER</label><br>
-        <label>Male<input type="radio" name="gender2"></label>
-        <label>Female<input type="radio" name="gender2" checked></label><br><br>
+<form action="index12.php" method="POST">
+    <label>Name <input type="text" name="you" placeholder="your name"></label><br><br>
+    <label>GENDER</label><br>
+    <label>Male<input type="radio" name="gender1" checked></label>
+    <label>Female<input type="radio" name="gender1"></label><br><hr>
 
-        <input type="submit" name="calculate" value="Calculate Love">
-    </form>
-    
-</body>
-</html>
+    <label>Name <input type="text" name="partner" placeholder="partner's name"></label><br><br>
+    <label>GENDER</label><br>
+    <label>Male<input type="radio" name="gender2"></label>
+    <label>Female<input type="radio" name="gender2" checked></label><br><br>
+
+    <input type="submit" name="calculate" value="Calculate Love">
+</form>
+
+//////////////index12.php file
+
+<?php 
+		echo "<div>";
+		if (isset($_POST['calculate'])) {
+			$rand = rand(65,100);
+
+			$you = $_POST['you'];
+			$partner = $_POST['partner'];
+
+			function logWriter($log,$result){
+				
+				if (!file_exists('log.txt')) {
+					file_put_contents('log.txt','');
+				}
+				$time = date('d/m/y h:iA', time());
+				$logs = file_get_contents('log.txt');
+				$logs .= $log . $result . "% at $time \n";
+
+				file_put_contents('log.txt' ,$logs);
+			}
+			echo "The compatibilty between " . $_POST['you'] . " and " . $_POST['partner'] . " is $rand%!" . " ";
+			echo "<meter value='$rand' min='0' low='50' max='100'></meter>";
+			$logs = "($you and $partner)'s compatiblity was : ";
+			logWriter($logs,$rand);
+		}
+		else {
+			echo "You have not submitted anything! please enter something";
+		}
+		echo "</div>"
+	?>
