@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment #2</title>
+</head>
+<body>
+
+    <form action="index12.php" method="POST">
+        <label>Name <input type="text" name="you" placeholder="your name"></label><br><br>
+        <label>GENDER</label><br>
+        <label>Male<input type="radio" name="gender1" checked></label>
+        <label>Female<input type="radio" name="gender1"></label><br><hr>
+
+        <label>Name <input type="text" name="partner" placeholder="partner's name"></label><br><br>
+        <label>GENDER</label><br>
+        <label>Male<input type="radio" name="gender2"></label>
+        <label>Female<input type="radio" name="gender2" checked></label><br><br>
+
+        <input type="submit" name="calculate" value="Calculate Love">
+    </form>
+    
+</body>
+</html>
